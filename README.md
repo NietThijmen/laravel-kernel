@@ -283,6 +283,16 @@ The client uses Laravel's HTTP client, so you can use `Http::fake()`:
 Http::fake(['api.onkernel.com/apps*' => Http::response([...], 200, ['X-Has-More' => 'false'])]);
 ```
 
+## Laravel Boost
+
+This package ships [AI guidelines](https://laravel.com/docs/boost#third-party-package-ai-guidelines) for [Laravel Boost](https://laravel.com/docs/boost). If your app uses Boost, they're picked up automatically when you run:
+
+```bash
+php artisan boost:install
+```
+
+The guidelines live in `resources/boost/guidelines/core.blade.php`.
+
 ## Testing
 
 ```bash
