@@ -160,7 +160,7 @@ it('creates deployments as multipart', function () {
             && str_contains($body, 'name="file"; filename="app.zip"')
             && str_contains($body, 'name="entrypoint_rel_path"')
             && str_contains($body, 'name="env_vars[FOO]"')
-            && preg_match('/name="force"\r\n\r\ntrue\r\n/', $body) === 1;
+            && preg_match('/name="force"\r\n(?:[^\r\n]+\r\n)*\r\ntrue\r\n/', $body) === 1;
     });
 });
 
