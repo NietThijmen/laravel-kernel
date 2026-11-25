@@ -1,37 +1,22 @@
 <?php
 
-namespace VendorName\Skeleton\Tests;
+namespace Nietthijmen\LaravelKernel\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Nietthijmen\LaravelKernel\LaravelKernelServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use VendorName\Skeleton\SkeletonServiceProvider;
 
 class TestCase extends Orchestra
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'VendorName\\Skeleton\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
-    }
-
     protected function getPackageProviders($app)
     {
         return [
-            SkeletonServiceProvider::class,
+            LaravelKernelServiceProvider::class,
         ];
     }
 
     public function getEnvironmentSetUp($app)
     {
-        config()->set('database.default', 'testing');
-
-        /*
-         foreach (\Illuminate\Support\Facades\File::allFiles(__DIR__ . '/../database/migrations') as $migration) {
-            (include $migration->getRealPath())->up();
-         }
-         */
+        config()->set('kernel.api_key', 'test-key');
+        config()->set('kernel.retry_delay', 0);
     }
 }
